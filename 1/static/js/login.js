@@ -27,6 +27,7 @@ $(function () {
             $( '.login-but' ).on( 'click', function() {
                 var usrname = $(".account").attr("value");
                 var paswd = $(".psw").attr("value");
+                /*
                 if (usrname=="WeLife"&&paswd=="uniquestudio") {
                     $( '.list' ).makisu( 'close' );
                     window.location.href="index.html?backurl="+window.location.href; 
@@ -34,6 +35,16 @@ $(function () {
                     alert("用户名或密码不正确");
                 };
                 
+                */
+                $.post('/login', { username: 'WeLife', password:"uniquestudio"}, function(data) {
+                    if (data == 1) {
+                        $( '.list' ).makisu( 'close' );
+                        window.location.href="index.html?backurl="+window.location.href; 
+                    }else{
+                        alert("用户名或密码不正确");
+                    };
+                    /*optional stuff to do after success */
+                });
                 //window.navigate("index.html"); 
                 
             });
